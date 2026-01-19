@@ -1,0 +1,18 @@
+# Secrets
+/.env
+/.env.local
+
+# Local data
+/uploads/
+/converted/
+
+# Local databases
+*.db
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Frontend artifacts
+/frontend/img-webp-ui/node_modules/
+/frontend/img-webp-ui/dist/

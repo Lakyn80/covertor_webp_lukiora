@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   LUKIORA DESIGN SYSTEM
+   ========================= */
+
+:root {
+  /* primary palette */
+  --lukiora-bg: #0b1024;
+  --lukiora-surface: #10162a;
+  --lukiora-surface-soft: #161b36;
+
+  --lukiora-primary: #8b5cf6;
+  --lukiora-primary-hover: #7c3aed;
+
+  --lukiora-accent: #a855f7;
+  --lukiora-accent-hover: #9333ea;
+
+  --lukiora-text: #e2e8f0;
+  --lukiora-text-muted: #94a3b8;
+
+  --lukiora-border: rgba(148, 163, 184, 0.18);
+  --lukiora-font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --lukiora-font-display: "Space Grotesk", "Manrope", "Segoe UI", system-ui, sans-serif;
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(
+      1100px 650px at 12% -10%,
+      rgba(139, 92, 246, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 520px at 92% 5%,
+      rgba(79, 70, 229, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      700px 520px at 85% 85%,
+      rgba(168, 85, 247, 0.16),
+      transparent 60%
+    ),
+    var(--lukiora-bg);
+
+  color: var(--lukiora-text);
+  font-family: var(--lukiora-font-body);
+}
+
+/* =========================
+   GLOBAL ELEMENTS
+   ========================= */
+
+a {
+  color: var(--lukiora-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--lukiora-accent-hover);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--lukiora-font-display);
+}
+
+button {
+  @apply transition;
+}
+
+/* =========================
+   SCROLLBAR (desktop)
+   ========================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

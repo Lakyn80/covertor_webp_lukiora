@@ -1,0 +1,45 @@
+services:
+  imgwebp_frontend:
+    image: "lakyn80/imgwebp-frontend:${FRONTEND_TAG}"
+    container_name: imgwebp_frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8084:80"
+
+  imgwebp_backend:
+    image: "lakyn80/imgwebp-backend:${BACKEND_TAG}"
+    container_name: imgwebp_backend
+    restart: unless-stopped
+    depends_on:
+      - imgwebp_db
+    env_file:
+      - .env
+    command: ["gunicorn", "-c", "gunicorn.conf.py", "app:app"]
+    ports:
+      - "127.0.0.1:8060:5000"
+    volumes:
+      - /var/www/img-webp/uploads:/app/uploads
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Europe/Prague
+      - DATABASE_URL=postgresql+psycopg2://imgwebp:imgwebp@imgwebp_db:5432/imgwebp
+
+  imgwebp_db:
+    image: postgres:16-alpine
+    container_name: imgwebp_db
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6543:5432"
+    environment:
+      - POSTGRES_USER=imgwebp
+      - POSTGRES_PASSWORD=imgwebp
+      - POSTGRES_DB=imgwebp
+    volumes:
+      - imgwebp_pgdata:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: img-webp_default
+
+volumes:
+  imgwebp_pgdata:
