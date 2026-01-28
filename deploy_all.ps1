@@ -5,8 +5,8 @@ Write-Host "Deploy TAG: $TAG"
 docker build -f ./backend/Dockerfile -t "lakyn80/imgwebp-backend:$TAG" ./backend
 docker push "lakyn80/imgwebp-backend:$TAG"
 
-# FRONTEND
-docker build -f ./frontend/img-webp-ui/Dockerfile -t "lakyn80/imgwebp-frontend:$TAG" ./frontend/img-webp-ui
+# FRONTEND (Next.js)
+docker build -f ./frontend-next/Dockerfile -t "lakyn80/imgwebp-frontend:$TAG" ./frontend-next
 docker push "lakyn80/imgwebp-frontend:$TAG"
 
 # .env pro server (vezmi komplet lokalni .env a jen prepis tagy)

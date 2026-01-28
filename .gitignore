@@ -1,6 +1,9 @@
 # Secrets
 /.env
 /.env.local
+/frontend-next/.env.local
+/frontend-next/.env.production
+/frontend-next/.env.development
 
 # Local data
 /uploads/
@@ -16,3 +19,6 @@ __pycache__/
 # Frontend artifacts
 /frontend/img-webp-ui/node_modules/
 /frontend/img-webp-ui/dist/
+/frontend-next/node_modules/
+/frontend-next/.next/
+/frontend-next/out/

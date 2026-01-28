@@ -4,7 +4,15 @@ services:
     container_name: imgwebp_frontend
     restart: unless-stopped
     ports:
-      - "127.0.0.1:8084:80"
+      - "127.0.0.1:8084:3000"
+    build:
+      context: ./frontend-next
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
 
   imgwebp_backend:
     image: "lakyn80/imgwebp-backend:${BACKEND_TAG}"
@@ -23,6 +31,22 @@ services:
       - PYTHONUNBUFFERED=1
       - TZ=Europe/Prague
       - DATABASE_URL=postgresql+psycopg2://imgwebp:imgwebp@imgwebp_db:5432/imgwebp
+
+  imgwebp_worker:
+    image: "lakyn80/imgwebp-backend:${BACKEND_TAG}"
+    container_name: imgwebp_worker
+    restart: unless-stopped
+    depends_on:
+      - imgwebp_db
+    env_file:
+      - .env
+    command: ["python", "tools/imap_activate.py"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Europe/Prague
+      - DATABASE_URL=postgresql+psycopg2://imgwebp:imgwebp@imgwebp_db:5432/imgwebp
+    profiles:
+      - imap
 
   imgwebp_db:
     image: postgres:16-alpine
