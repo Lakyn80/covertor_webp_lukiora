@@ -81,6 +81,17 @@ Only Next frontend is deployed.
 
 ---
 
+## Tests
+
+Backend tests (pytest):
+
+```
+python -m pip install -r backend/requirements.txt -r backend/requirements-dev.txt
+pytest -q
+```
+
+---
+
 ## Status
 
 - Single frontend (Next.js)
