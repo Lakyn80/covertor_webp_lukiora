@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { FALLBACK_TEXTS, TRANSLATIONS } from "@/language/translations";
+import { FALLBACK_TEXTS, TRANSLATIONS } from "@/translations";
 
 type TranslationKey = keyof typeof TRANSLATIONS;
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
-import { FALLBACK_TEXTS, TRANSLATIONS } from "@/language/translations";
+import { FALLBACK_TEXTS, TRANSLATIONS } from "@/translations";
 
 const DEFAULT_LANG = process.env.NEXT_PUBLIC_DEFAULT_LANG || "en";
 const SUPPORT_EMAIL = "service@lukiora.com";
@@ -83,8 +83,8 @@ export default function LegalPage({ kind }: { kind: LegalKind }) {
   }, [lang]);
 
   return (
-    <main className="min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 py-12">
+    <main className="min-h-screen flex flex-col">
+      <div className="max-w-3xl mx-auto px-4 py-12 flex-1">
         <Link href="/" className="text-sm text-violet-300 hover:text-violet-200">
           ← {t.backToConverter}
         </Link>
@@ -215,6 +215,18 @@ export default function LegalPage({ kind }: { kind: LegalKind }) {
           </>
         )}
       </div>
+      <footer className="border-t border-slate-800/80 bg-slate-950/40">
+        <div className="max-w-3xl mx-auto w-full px-4 py-6">
+          <div className="flex flex-wrap gap-4 text-sm">
+            <Link className="text-slate-200 hover:text-violet-300 transition" href="/privacy">
+              {t.footerPrivacy}
+            </Link>
+            <Link className="text-slate-200 hover:text-violet-300 transition" href="/cookies">
+              {t.footerCookies}
+            </Link>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

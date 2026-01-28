@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { DEFAULT_KEYWORDS, FALLBACK_TEXTS } from "@/language/translations";
+import { DEFAULT_KEYWORDS, FALLBACK_TEXTS } from "@/translations";
 
 const metadataBase = new URL("https://convertor.lukiora.com");
 const siteUrl = metadataBase.toString().replace(/\/$/, "");

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { FALLBACK_TEXTS } from "@/language/translations";
+import { FALLBACK_TEXTS } from "@/translations";
 
 const title = FALLBACK_TEXTS.seoTitle || FALLBACK_TEXTS.heroTitle;
 const description = FALLBACK_TEXTS.seoDescription || FALLBACK_TEXTS.subtitle;

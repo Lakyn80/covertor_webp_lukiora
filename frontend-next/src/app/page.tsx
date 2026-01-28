@@ -1,5 +1,5 @@
 import Webpify from "@/components/Webpify";
-import { FALLBACK_TEXTS } from "@/language/translations";
+import { FALLBACK_TEXTS } from "@/translations";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
 const defaultLang = process.env.NEXT_PUBLIC_DEFAULT_LANG || "en";

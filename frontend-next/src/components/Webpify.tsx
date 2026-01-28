@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import AuthPanel from "./AuthPanel";
-import { AUTH_TRANSLATIONS, DEFAULT_KEYWORDS, FALLBACK_TEXTS, LANGUAGE_ORDER, TRANSLATIONS } from "@/language/translations";
+import { AUTH_TRANSLATIONS, DEFAULT_KEYWORDS, FALLBACK_TEXTS, LANGUAGE_ORDER, TRANSLATIONS } from "@/translations";
 import type { AuthPayload, User } from "@/types";
 
 const ACCEPT = "image/*,.heic,.heif,.jpg,.jpeg,.png,.webp,.tif,.tiff,.bmp,.gif";
@@ -291,7 +291,7 @@ export default function Webpify() {
       const trimmed = capacity < arr.length ? arr.slice(0, capacity) : arr;
       if (!isUnlimited && trimmed.length === 0) {
         if (typeof window !== "undefined") {
-          window.alert("Najednou m…§eç konvertovat maxim lnØ 3 fotky. Spusœ konverzi a pak pýidej dalç¡.");
+          window.alert(t.batchLimitHint);
         }
         return prev;
       }
@@ -695,7 +695,7 @@ export default function Webpify() {
 
             {!isUnlimited && (
               <div className="mt-2 text-xs text-slate-400">
-                Najednou m…§eç konvertovat maxim lnØ 3 fotky. Po dokonŸen¡ m…§eç pýidat dalç¡.
+                {t.batchLimitHint}
               </div>
             )}
 
@@ -809,13 +809,6 @@ export default function Webpify() {
             <a className="text-slate-200 hover:text-violet-300 transition" href="/cookies">
               {t.footerCookies}
             </a>
-            <button
-              type="button"
-              onClick={() => setCookieSettingsOpen(true)}
-              className="text-slate-200 hover:text-violet-300 transition"
-            >
-              {t.cookieSettings}
-            </button>
           </div>
         </div>
       </footer>

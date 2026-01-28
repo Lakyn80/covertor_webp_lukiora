@@ -48,7 +48,11 @@ def main():
     status, msg_data = mail.fetch(num, "(RFC822)")
     if status != "OK" or not msg_data or not msg_data[0]:
       continue
-    msg = email.message_from_bytes(msg_data[0][1])
+    msg_bytes = msg_data[0][1]
+    if isinstance(msg_bytes, bytes):
+      msg = email.message_from_bytes(msg_bytes)
+    else:
+      continue
     print("FROM:", decode(msg.get("From")))
     print("SUBJECT:", decode(msg.get("Subject")))
     print("-" * 40)

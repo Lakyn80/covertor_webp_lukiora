@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { headers } from "next/headers";
-import { FALLBACK_TEXTS, TRANSLATIONS } from "@/language/translations";
+import { FALLBACK_TEXTS, TRANSLATIONS } from "@/translations";
 
 const siteUrl = "https://convertor.lukiora.com";
 const siteHost = siteUrl.replace(/^https?:\/\//, "");
